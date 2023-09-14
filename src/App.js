@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
-
+import AuthProvider from "./authContext";
+import DashBoard from "./dashBoard";
+import ForgetPassword from "./forgetPassword";
+import Login from "./login";
+import Signup from "./signup";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
+import UpdateProfile from "./updateProfile";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <AuthProvider>
+        <Routes>
+          <Route path="/" element={<Signup />} />
+          <Route path="login" element={<Login />} />
+          <Route path="forget_password" element={<ForgetPassword />} />
+          <Route path="dashboard" element={<DashBoard />} />
+          <Route path="update_profile" element={<UpdateProfile />} />
+        </Routes>
+      </AuthProvider>
+    </Router>
   );
 }
 
